@@ -188,7 +188,6 @@
       
       var matchedTokens = text.match(SUFFIX_PATTERN);
       if( !matchedTokens ) return null;
-       console.log(matchedTokens);
       var minute = 0;
       var second = 0;
       var hour = matchedTokens[2];
