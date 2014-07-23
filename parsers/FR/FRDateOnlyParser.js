@@ -9,9 +9,9 @@
     throw 'Cannot find the chrono main module';
   
   
-  function DateOnlyParser(text, ref, opt){
+  function FRDateOnlyParser(text, ref, opt){
     
-    var PATTERN = /(\W|^)((the|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s*)?([0-9]{1,2})(th|rd|nd|st)(\W|$)/i;
+    var PATTERN = /(\W|^)((le|Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dimanche)\s*)([0-9]{1,2})(\W|$)/i;
     opt = opt || {};
     ref = ref || new Date();
     var parser = chrono.Parser(text, ref, opt);
@@ -28,7 +28,7 @@
       }
       
       var text = matchedTokens[0];
-      text = matchedTokens[0].substr(matchedTokens[1].length, matchedTokens[0].length - matchedTokens[1].length - matchedTokens[6].length);
+      text = matchedTokens[0].substr(matchedTokens[1].length, matchedTokens[0].length - matchedTokens[1].length - matchedTokens[5].length);
       index = index + matchedTokens[1].length;
       
       var day = matchedTokens[4];
@@ -36,7 +36,6 @@
       
       var date = moment(ref);
       date.date(day);
-
         if(date<ref){
             date.month(date.month() + 1);
         }
@@ -62,6 +61,6 @@
   	return parser;
   }
   
-  chrono.parsers.DateOnlyParser = DateOnlyParser;
+  chrono.parsers.FRDateOnlyParser = FRDateOnlyParser;
 })();
 
