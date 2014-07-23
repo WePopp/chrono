@@ -9,6 +9,7 @@ cat ./parsers/DE/* >> tmp
 cat ./parsers/EN/* >> tmp
 cat ./parsers/TH/* >> tmp
 cat ./parsers/JP/* >> tmp
+cat ./parsers/FR/* >> tmp
 cat ./refiners/IntegratedRefinement.js >> tmp
 cat ./refiners/ALL/* >> tmp
 echo '})()' >> tmp
