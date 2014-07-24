@@ -214,9 +214,9 @@
       
 
 
-      if(matchedTokens[8]){
+      if(matchedTokens[9]){
         
-        second = matchedTokens[8];
+        second = matchedTokens[9];
         second = parseInt(second);
         if(second >= 60) return null;
       }
