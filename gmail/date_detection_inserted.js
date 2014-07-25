@@ -12,16 +12,12 @@ function parseChildByChild(textAsElement){
                 .each(function(i){
                     var results = chrono.parse($(this).text());
                     var textNode = $(this);
-                    results.forEach(function(part, index, theArray){
-                        theArray[index] = {
-                            result: part,
+                    if( results.length >0){
+                        detectedDates.push({results: results,
                             textNode: textNode,
-                            textNodeIndexInElement: index,
-                            element: textAsElement
-                        };
-                    });
-
-                    $.merge(detectedDates, results);
+                            textNodeIndexInElement: i,
+                            element: textAsElement});
+                    }
                 });
         }
 
@@ -35,13 +31,14 @@ function parseChildByChild(textAsElement){
 function findDateGeneratedByPlugin(resultsArray){
     resultsArray.forEach(
         function(part, index, theArray){
-            if(part.result.concordance.match("#wetime-date-link")){
-                 if(part.result.start.timezoneOffset==-0){
-                     var newDate = part.result.startDate;
+            var wetime_results = $.grep(part.results, function(e){return e.concordance.match("#wetime-date-link") });
+            if(wetime_results.length>0){
+                 if(wetime_results[0].start.timezoneOffset==-0){
+                     var newDate = wetime_results[0].startDate;
                      newDate.addMinutes((-1)*newDate.getTimezoneOffset());
                      var elementToModify = part.textNode.parent().parent();
                      var partToChange = $.grep(resultsArray, function(e){return e.element.is(elementToModify)});
-                     theArray[theArray.indexOf(partToChange[0])].result.startDate = newDate;
+                     theArray[theArray.indexOf(partToChange[0])].results[0].startDate = newDate;
                  }
             }
         }
@@ -73,28 +70,26 @@ insertionQ('.a3s').every(function(e) {
   detectedDates = findDateGeneratedByPlugin(detectedDates);
 
 
-  detectedDates = detectedDates.sort(function(detectedDateB, detectedDateA) {
-    return detectedDateB.result.startDate - detectedDateA.result.startDate;
-  });
-
   if(detectedDates.length == 0) {
     return;
   }
 
   for(var i=0; i<detectedDates.length; i++) {
-    var detectedDate = detectedDates[i].result;
     var textNode = detectedDates[i].textNode;
-    var startIndex = detectedDate.index;
-    var endIndex = detectedDate.text.length + startIndex;
-    var date = detectedDate.startDate;
-    var detectedText = detectedDate.text;
+    var html = textNode.text();
 
+    detectedDates[i].results.sort(function(detectedDateA, detectedDateB) {
+        return detectedDateB.index - detectedDateA.index;
+    }).forEach(function(detectedDate){
+        var startIndex = detectedDate.index;
+        var endIndex = detectedDate.text.length + startIndex;
+        var date = detectedDate.startDate;
+        var detectedText = detectedDate.text;
+        var span = "<span class='wetime-date-link' data-value='" + date.toString("yyyy-MM-dd HH:mm") + "'>" + detectedText + "<div class='conflict-dot'></div></span>"
+        html = html.substring(0,startIndex) + span + html.substring(endIndex);
+    });
 
-
-    var span = "<span class='wetime-date-link' data-value='" + date.toString("yyyy-MM-dd HH:mm") + "'>" + detectedText + "<div class='conflict-dot'></div></span>"
-
-
-    textNode.replaceWith(textNode.text().substring(0,startIndex) + span + textNode.text().substring(endIndex));
+    textNode.replaceWith(html);
     //need to be improved if there is children
 
   }
