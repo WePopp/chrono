@@ -902,6 +902,10 @@ test("FR Test - DateOnly", function() {
 	var results = chrono.parse(text, new Date(2012,7,10));
 	ok(results.length == 0, JSON.stringify( results ) )
 
+    var text = "Retrouvons-nous sur le 5 rue denfert";
+    var results = chrono.parse(text, new Date(2012,7,10));
+    ok(results.length == 0, JSON.stringify( results ) )
+
 });
 
 //test("Test - Date & Time ago", function() {

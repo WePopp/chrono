@@ -186,8 +186,6 @@
       text = text.substr(result.index + result.text.length);
       
       var matchedTokens = text.match(SUFFIX_PATTERN);
-      console.log(text);
-      console.log(matchedTokens);
       if( !matchedTokens ) return null;
       var minute = 0;
       var second = 0;
