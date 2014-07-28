@@ -202,7 +202,7 @@
       else if(hour.toLowerCase() == 'morning'|| hour.toLowerCase() == 'matin'){
           hour = 9
       }
-      else if(hour.toLowerCase() == 'apres-midi' || hour.toLowerCase() == 'afternoon'){
+      else if(hour.toLowerCase() == 'apres-midi' || hour.toLowerCase() == 'après-midi' || hour.toLowerCase() == 'afternoon'){
           hour = 14
       }
       else
