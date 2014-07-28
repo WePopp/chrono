@@ -3,7 +3,7 @@ var detectedDates = [];
 
 function parseChildByChild(textAsElement){
     if(textAsElement.attr("class") != "gmail_quote"){
-        if(textAsElement.prop("tagName") != "A"){
+        if(textAsElement.prop("tagName") != "A" && !textAsElement.attr("class").match("wetime-date-link")){
 
             textAsElement.contents()
                 .filter(function(){
