@@ -6,7 +6,7 @@ test("Test - Timezone Conversion", function() {
 		'Thu Dec 19 2013 12:00:00 GMT-0500 (EST)'
 	);
 
-	ok(results.length == 1, JSON.stringify( results ) )
+	ok(results.length == 1, JSON.stringify( results ) );
 
 	var result = results[0];
 	ok(result.start.year 	== 2013, 'year  in ' + JSON.stringify( result.start ) )

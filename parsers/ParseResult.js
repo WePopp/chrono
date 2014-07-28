@@ -73,10 +73,10 @@
       }
 
       if(timezoneOffset === undefined || timezoneOffset === null)
-        timezoneOffset = new Date().getTimezoneOffset()
+        timezoneOffset = new Date(this.year,this.month,this.day).getTimezoneOffset();
       
       var dateMoment = moment(new Date(this.year,this.month,this.day));
-      
+
       //If there is only date representation, move the represent time to 12 AM
       if(this.hour === undefined || this.hour === null) dateMoment.hours(12);
       else dateMoment.hours(this.hour);
@@ -84,7 +84,7 @@
       dateMoment.minutes(this.minute);
       dateMoment.seconds(this.second);
 
-      dateMoment.add('minutes', timezoneOffset - new Date().getTimezoneOffset());
+      dateMoment.add('minutes', timezoneOffset - new Date(this.year,this.month,this.day).getTimezoneOffset());
       //console.log(timezoneOffset)
       return dateMoment.toDate();
     }

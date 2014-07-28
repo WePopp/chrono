@@ -9,7 +9,7 @@
     throw 'Cannot find the chrono main module';
   
   //var PATTERN = /(today|tonight|tomorrow|yesterday|last\s*night|([0-9]+)\s*day(s)\s*ago|([0-9]{1,2})(\.|\:|\：)([0-9]{2})|([0-9]{1,2}\s*\W?\s*)?([0-9]{1,2})\s*(AM|PM)|at\s*([0-9]{1,2}|noon|midnight)|(noon|midnight))(\W|$)/i;
-  var PATTERN = /(aujourd'hui|demain|ce\s*soir|cette\s*nuit|([0-9]{1,2})(\.|\:|\：|h)([0-9]{2})|([0-9]{1,2}\s*\W?\s*)?([0-9]{1,2})\s*(AM|PM)|((à|a)\s*)?([0-9]{1,2}h([0-9]{2})?|noon|midnight|midi|minuit)|(noon|midnight|midi|minuit))(\W|$)/i;
+  var PATTERN = /(aujourd'hui|demain|ce\s*soir|cette\s*nuit|([0-9]{1,2})(\.|\:|\：|h)([0-9]{2})|([0-9]{1,2}\s*\W?\s*)?([0-9]{1,2})\s*(AM|PM)|((à|a)\s*)?\s+([0-9]{1,2}h([0-9]{2})?|midi|minuit)|\s+(midi|minuit|matin|apres-midi|après-midi))(\W|$)/i;
   function FRGeneralDateParser(text, ref, opt){
     
     opt = opt || {};

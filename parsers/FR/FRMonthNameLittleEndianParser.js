@@ -17,14 +17,14 @@
                              'avril': 'April', 'avr': 'April',
                              'mai': 'May',
                              'juin': 'June',
-                             'juillet': 'July',
+                             'juillet': 'July', 'juil': 'July',
                              'aout': 'August', 'août': 'August',
                             'septembre': 'September', 'sept': 'September',
                             'octobre': 'October', 'oct': 'Oct',
                             'novembre': 'November', 'nov': 'Nov',
                             'décembre': 'December', 'dec': 'December', 'déc': 'December', 'decembre': 'December'};
 
-  var regPattern  = /(\W|^)((Dimanche|Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dim|Lun|Mar|Mer|Jeu|Ven|Sam)\s*,?\s*)?([0-9]{1,2})(\s*(Janvier|Jan|Février|Fevrier|Fev|Fév|Mars|Mar|Avril|Avr|Mai|Juin|Juillet|Aout|Août|Septembre|Sept|Octobre|Oct|Novembre|Nov|Decembre|Décembre|Dec))((\s*[0-9]{2,4})(\s*BE)?)?(\W|$)/i;
+  var regPattern  = /(\W|^)((Dimanche|Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dim|Lun|Mar|Mer|Jeu|Ven|Sam)\s*,?\s*)?([0-9]{1,2})(\s*(Janvier|Jan|Février|Fevrier|Fev|Mars|Mar|Avril|Avr|Mai|Juin|Juillet|Juil|Aout|Août|Septembre|Sept|Octobre|Oct|Novembre|Nov|Decembre|Décembre|Dec))((\s*[0-9]{2,4})(\s*BE)?)?(\W|$)/i;
 
 
 

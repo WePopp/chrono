@@ -149,7 +149,7 @@
       });
       
       if(moment(components2.date()).diff(moment(components1.date())) > 0){ 
-        
+
         return new chrono.ParseResult({
           referenceDate:result1.ref,
           index :result1.index,
@@ -180,13 +180,14 @@
      * @return { CNResult } 
      */
     parser.extractTime = function(text, result){
-      
-      var SUFFIX_PATTERN = /^\s*,?\s*(at|from|T|à|a)?\s*,?\s*([0-9]{1,4}|noon|midnight|minuit|midi)(((h|\.|\:|\：)([0-9]{1,2})((\.|\:|\：)([0-9]{1,3}))?)?(\s*(AM|PM)?)|h)(\W|$|Z)/i;
+      var SUFFIX_PATTERN = /^\s*,?\s*(at\s+|from\s+|T|a\s+|à\s+|l[']|dans l[']|le\s+|in the\s+)?\s*,?\s*([0-9]{1,4}|noon|midnight|minuit|midi|apres-midi|après-midi|matin|morning|afternoon)(((h|\.|\:|\：)([0-9]{1,2})((\.|\:|\：)([0-9]{1,3}))?)?(\s*(AM|PM)?)|h)(\W|$|Z)/i;
 
       if(text.length <= result.index + result.text.length) return null;
       text = text.substr(result.index + result.text.length);
       
       var matchedTokens = text.match(SUFFIX_PATTERN);
+      console.log(text);
+      console.log(matchedTokens);
       if( !matchedTokens ) return null;
       var minute = 0;
       var second = 0;
@@ -197,6 +198,12 @@
       }else if(hour.toLowerCase() == 'midnight' || hour.toLowerCase() == 'minuit'){
         result.start.meridiem = 'am'
         hour = 0;
+      }
+      else if(hour.toLowerCase() == 'morning'|| hour.toLowerCase() == 'matin'){
+          hour = 9
+      }
+      else if(hour.toLowerCase() == 'apres-midi' || hour.toLowerCase() == 'afternoon'){
+          hour = 14
       }
       else
         hour = parseInt(hour);

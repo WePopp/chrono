@@ -53,10 +53,20 @@
       
 
       if(suffix && suffix.toLowerCase().match('8')){
-          date.day(offset+7);
+          var ref_offset = date.day();
+          if(offset > ref_offset)
+              date.day(offset+7);
+          else
+              date.day(offset+14);
+
       }
       else if(suffix && suffix.toLowerCase().match('15'))  {
-          date.day(offset+15);
+          var ref_offset = date.day();
+          if(offset > ref_offset)
+              date.day(offset+14);
+          else
+              date.day(offset+21);
+
       }
       else{
         var ref_offset = date.day();
