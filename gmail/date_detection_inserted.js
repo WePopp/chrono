@@ -37,23 +37,42 @@ function parseChildByChild(textAsElement){
     }
 }
 
+//function findDateGeneratedByPlugin(resultsArray){
+//    resultsArray.forEach(
+//        function(part, index, theArray){
+//            var wetime_results = $.grep(part.results, function(e){return e.concordance.match("#wetime-date-link") });
+//            if(wetime_results.length>0){
+//                 if(wetime_results[0].start.timezoneOffset==-0){
+//                     var newDate = wetime_results[0].startDate;
+//                     newDate.addMinutes((-1)*newDate.getTimezoneOffset());
+//                     var elementToModify = part.textNode.parent().parent();
+//                     var partToChange = $.grep(resultsArray, function(e){return e.element.is(elementToModify)});
+//                     theArray[theArray.indexOf(partToChange[0])].results[0].startDate = newDate;
+//                 }
+//            }
+//        }
+//    );
+//    return resultsArray;
+//}
+
 function findDateGeneratedByPlugin(resultsArray){
     resultsArray.forEach(
         function(part, index, theArray){
             var wetime_results = $.grep(part.results, function(e){return e.concordance.match("#wetime-date-link") });
             if(wetime_results.length>0){
-                 if(wetime_results[0].start.timezoneOffset==-0){
-                     var newDate = wetime_results[0].startDate;
-                     newDate.addMinutes((-1)*newDate.getTimezoneOffset());
-                     var elementToModify = part.textNode.parent().parent();
-                     var partToChange = $.grep(resultsArray, function(e){return e.element.is(elementToModify)});
-                     theArray[theArray.indexOf(partToChange[0])].results[0].startDate = newDate;
-                 }
+                if(wetime_results[0].start.timezoneOffset==-0){
+                    var newDate = wetime_results[0].startDate;
+                    newDate.addMinutes((-1)*newDate.getTimezoneOffset());
+                    var elementToModify = part.textNode.parent().parent();
+                    var partToChange = $.grep(resultsArray, function(e){return e.element.is(elementToModify)});
+                    theArray[theArray.indexOf(partToChange[0])].results[0].startDate = newDate;
+                }
             }
         }
     );
     return resultsArray;
 }
+
 
 insertionQ('.a3s').every(function(e) {  
   $(".aBn").replaceWith(function() {
