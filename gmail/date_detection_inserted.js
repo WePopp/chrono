@@ -10,13 +10,15 @@ function parseChildByChild(textAsElement){
         catch(err){
           bool = true;
         }
-        if(textAsElement.prop("tagName") != "A" && bool){
+
+        if(textAsElement.attr("tagName") != "A" && bool){
 
             textAsElement.contents()
                 .filter(function(){
                     return this.nodeType === 3;
                 })
                 .each(function(i){
+                  
                     var results = chrono.parse($(this).text());
                     var textNode = $(this);
                     if( results.length >0){
@@ -92,7 +94,8 @@ insertionQ('.a3s').every(function(e) {
         var endIndex = detectedDate.text.length + startIndex;
         var date = detectedDate.startDate;
         var detectedText = detectedDate.text;
-        var span = "<span class='wetime-date-link' data-value='" + date.toString("yyyy-MM-dd HH:mm") + "'>" + detectedText + "<div class='conflict-dot'></div></span>"
+        var dateString = date.toJSON().replace("T", " ").substring(0, 16);
+        var span = "<span class='wetime-date-link' data-value='" + dateString + "'>" + detectedText + "<div class='conflict-dot'></div></span>"
         html = html.substring(0,startIndex) + span + html.substring(endIndex);
     });
 
