@@ -24,7 +24,7 @@
                             'novembre': 'November', 'nov': 'Nov',
                             'décembre': 'December', 'dec': 'December', 'déc': 'December', 'decembre': 'December'};
 
-  var regPattern  = /(\W|^)((Dimanche|Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dim|Lun|Mar|Mer|Jeu|Ven|Sam)\s*,?\s*)?([0-9]{1,2})(\s*(Janvier|Jan|Février|Fevrier|Fev|Mars|Mar|Avril|Avr|Mai|Juin|Juillet|Juil|Aout|Août|Septembre|Sept|Octobre|Oct|Novembre|Nov|Decembre|Décembre|Dec))((\s*[0-9]{2,4})(\s*BE)?)?(\W|$)/i;
+  var regPattern  = /(\s+|^)((Dimanche|Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dim|Lun|Mar|Mer|Jeu|Ven|Sam)\s*,?\s*)?([0-9]{1,2})(\s*(Janvier|Jan|Février|Fevrier|Fev|Mars|Mar|Avril|Avr|Mai|Juin|Juillet|Juil|Aout|Août|Septembre|Sept|Octobre|Oct|Novembre|Nov|Decembre|Décembre|Dec))((\s*[0-9]{2,4})(\s*BE)?)?(\W|$)/i;
 
 
 
@@ -47,6 +47,7 @@
       var remainingText = text;
       
       var matchedTokens = text.match(regPattern);
+        console.log(matchedTokens);
       text = matchedTokens[0];
       text = matchedTokens[0].substr(matchedTokens[1].length, matchedTokens[0].length - matchedTokens[10].length - matchedTokens[1].length);
       index = index + matchedTokens[1].length;
@@ -107,7 +108,7 @@
       // Text text can be 'range' value. Such as '12 - 13 January 2012'
       //deleted
         //Check leap day or impossible date
-        if(date.format('D') != matchedTokens[4]) return null;
+        if(date.format('D') != parseInt(matchedTokens[4]) || matchedTokens[4].length>2) return;
         return new chrono.ParseResult({
           referenceDate:ref,
           text:originalText,

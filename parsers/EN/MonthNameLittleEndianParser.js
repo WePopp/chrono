@@ -124,7 +124,7 @@
       }
       else{
         //Check leap day or impossible date
-        if(date.format('D') != matchedTokens[4]) return null;
+        if(date.format('D') != parseInt(matchedTokens[4]) || matchedTokens[4].length>2) return ;
         return new chrono.ParseResult({
           referenceDate:ref,
           text:originalText,

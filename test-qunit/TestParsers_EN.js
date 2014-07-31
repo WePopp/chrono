@@ -209,9 +209,25 @@ test("EN Test - Little Endian with Month's name", function() {
 		ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
 	}
 
+    var text = "The Deadline is 01 August";
+    var results = chrono.parse(text, new Date(2012,7,10));
+
+    ok(results.length == 1, JSON.stringify( results ) )
+
+    var result = results[0];
+    if(result){
+        ok(result.start, JSON.stringify(result.start) )
+        ok(result.start.year == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) )
+        ok(result.start.month == 7, 'Test Result - (Month) ' + JSON.stringify(result.start) )
+        ok(result.start.day == 1, 'Test Result - (Day) ' + JSON.stringify(result.start) )
+        ok(result.text == "01 August", result.text);
+        var resultDate = (result.startDate);
+        var expectDate = (new Date(2012,7,1,12));
+        ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
+    }
 
 
-	var text = "The Deadline is 10 August 2555 BE";
+    var text = "The Deadline is 10 August 2555 BE";
 	var results = chrono.parse(text, new Date(2012,7,10));
 
 	ok(results.length == 1, JSON.stringify( results ) )
@@ -605,7 +621,25 @@ test("EN Test - Middle Endian with Month's name", function() {
 	}
 
 
-	var text = "The Deadline is Tue, January 10";
+    var text = "The Deadline is August 01";
+    var results = chrono.parse(text, new Date(2012,7,10));
+
+    ok(results.length == 1, JSON.stringify( results ) )
+
+    var result = results[0];
+    if(result){
+        ok(result.start, JSON.stringify(result.start) )
+        ok(result.start.year == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) )
+        ok(result.start.month == 7, 'Test Result - (Month) ' + JSON.stringify(result.start) )
+        ok(result.start.day == 1, 'Test Result - (Day) ' + JSON.stringify(result.start) )
+        ok(result.text == "August 01", result.text);
+        var resultDate = (result.startDate);
+        var expectDate = (new Date(2012,7,1,12));
+        ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
+    }
+
+
+    var text = "The Deadline is Tue, January 10";
 	var results = chrono.parse(text, new Date(2012,7,10));
 
 	ok(results.length == 1, JSON.stringify( results ) )
@@ -1411,6 +1445,11 @@ test("EN Test - DateOnly", function() {
 	var results = chrono.parse(text, new Date(2012,7,10));
 	ok(results.length == 0, JSON.stringify( results ) )
 
+
+    var text = " $3.20 ";
+    var results = chrono.parse(text, new Date(2012,7,10));
+    ok(results.length == 0, text)
+
 });
 
 //test("EN Test - Date & Time ago", function() {
@@ -2151,5 +2190,15 @@ test("EN Test - General2", function() {
 
   ok(results.length == 1, JSON.stringify(results) )
   ok(results[0].text == '2014-07-07T04:00:00Z', JSON.stringify(results) )
+
+
+    var text = "The Deadline is 32 July";
+    var results = chrono.parse(text, new Date(2012,7,10));
+    ok(results.length == 0, text );
+
+
+    var text = "The Deadline is July 32";
+    var results = chrono.parse(text, new Date(2012,7,10));
+    ok(results.length == 0, text)
  
 });

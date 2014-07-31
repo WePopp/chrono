@@ -131,7 +131,7 @@
         
 			}else{
         
-        if(date.format('D') != parseInt(matchedTokens[9]) + '') return null;
+        if(date.format('D') != parseInt(matchedTokens[9]) + '') return ;
 
         return new chrono.ParseResult({
           referenceDate:ref,

@@ -192,7 +192,26 @@ test("FR Test - Little Endian with Month's name", function() {
 		ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
 	}
 
-	var text = "The Deadline est le 10 Août";
+    var text = "The Deadline est le 07 Septembre 2012";
+    var results = chrono.parse(text, new Date(2012,7,10));
+
+    ok(results.length == 1, JSON.stringify( results ) )
+
+    var result = results[0];
+    if(result){
+        ok(result.start, JSON.stringify(result.start) )
+        ok(result.start.year == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) )
+        ok(result.start.month == 8, 'Test Result - (Month) ' + JSON.stringify(result.start) )
+        ok(result.start.day == 7, 'Test Result - (Day) ' + JSON.stringify(result.start) )
+        ok(result.text == "07 Septembre 2012", result.text);
+        var resultDate = (result.startDate);
+        var expectDate = (new Date(2012,8,7,12));
+        ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
+    }
+
+
+
+    var text = "The Deadline est le 10 Août";
 	var results = chrono.parse(text, new Date(2012,7,10));
 
 	ok(results.length == 1, JSON.stringify( results ) )
@@ -906,6 +925,15 @@ test("FR Test - DateOnly", function() {
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 0, JSON.stringify( results ) )
 
+
+    var text = " €3.20 ";
+    var results = chrono.parse(text, new Date(2012,7,10));
+    ok(results.length == 0, text);
+
+    var text = " 3.20 €";
+    var results = chrono.parse(text, new Date(2012,7,10));
+    ok(results.length == 0, JSON.stringify( results ) )
+
 });
 
 //test("Test - Date & Time ago", function() {
@@ -1566,5 +1594,12 @@ test("FR Test - General2", function() {
   ok(result.text == text, result.text)
   ok(result.start.hour == 9, JSON.stringify(result))
 
- 
+
+    var text = "The Deadline is le 32 Juillet";
+    var results = chrono.parse(text, new Date(2012,7,10));
+    ok(results.length == 0, text )
+
+
+
+
 });
