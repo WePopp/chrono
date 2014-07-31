@@ -37,6 +37,16 @@ function parseChildByChild(textAsElement){
     }
 }
 
+function dateToString(date) {
+    var dateStr = date.getFullYear().toString() + "-" +
+        temp.getMonth().toString() + "-" +
+        temp.getDate().toString() +
+        temp.getHours().toString() + ":" +
+        temp.getMinutes().toString();
+
+    return dateStr ;
+}
+
 //function findDateGeneratedByPlugin(resultsArray){
 //    resultsArray.forEach(
 //        function(part, index, theArray){
@@ -148,7 +158,7 @@ insertionQ('.a3s').every(function(e) {
         var date = detectedDate.startDate;
         var detectedText = detectedDate.text;
             console.log(date);
-        var dateString = date.toJSON().replace("T", " ").substring(0, 16);
+        var dateString = dateToString(date);
             console.log(dateString);
         var span = "<span class='wetime-date-link' data-value='" + dateString + "'>" + detectedText + "<div class='conflict-dot'></div></span>"
         html = html.substring(0,startIndex) + span + html.substring(endIndex);
