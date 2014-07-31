@@ -58,6 +58,7 @@ function parseChildByChild(textAsElement){
 function findDateGeneratedByPlugin(resultsArray){
     resultsArray.forEach(
         function(part, index, theArray){
+            console.log(part);
             var wetime_results = $.grep(part.results, function(e){return e.concordance.match("#wetime-date-link") });
             if(wetime_results.length>0){
                 if(wetime_results[0].start.timezoneOffset==-0){
