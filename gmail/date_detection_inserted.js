@@ -68,10 +68,10 @@ function findDateGeneratedByPlugin(resultsArray){
             {
                 console.log(parent);
                 console.log(grandparent);
-                console.log(part.results[0].start.impliedComponents.indexOf("day") , parent[0].tagName, parent.children()[0].tagName, grandparent.tagName, grandparent.contents()
+                console.log(part.results[0].start.impliedComponents.indexOf("day") , parent[0].tagName, parent.children()[0].tagName, grandparent[0].tagName, grandparent.contents()
                     .filter(function(){
                         return this.nodeType === 3;
-                    }).length);
+                    }));
                 if( part.results[0].start.impliedComponents.indexOf("day") != -1 &&
                     parent[0].tagName == "DIV" &&
                     parent.children()[0].tagName == "A" &&
