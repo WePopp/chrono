@@ -40,7 +40,7 @@ function parseChildByChild(textAsElement){
 function dateToString(date) {
     var dateStr = date.getFullYear().toString() + "-" +
         date.getMonth().toString() + "-" +
-        date.getDate().toString() +
+        date.getDate().toString() + " " +
         date.getHours().toString() + ":" +
         date.getMinutes().toString();
 
