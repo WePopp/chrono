@@ -41,7 +41,7 @@ function dateToString(date) {
     var hours = date.getHours().toString();
     var mins = date.getMinutes().toString();
     var days= date.getDate().toString();
-    var month = date.getMonth().toString() ;
+    var month = (date.getMonth()+1).toString() ;
     if(hours.length == 1){
          hours = "0" + hours;
     }
