@@ -157,9 +157,7 @@ insertionQ('.a3s').every(function(e) {
         var endIndex = detectedDate.text.length + startIndex;
         var date = detectedDate.startDate;
         var detectedText = detectedDate.text;
-            console.log(date);
         var dateString = dateToString(date);
-            console.log(dateString);
         var span = "<span class='wetime-date-link' data-value='" + dateString + "'>" + detectedText + "<div class='conflict-dot'></div></span>"
         html = html.substring(0,startIndex) + span + html.substring(endIndex);
     });
