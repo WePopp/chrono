@@ -38,11 +38,27 @@ function parseChildByChild(textAsElement){
 }
 
 function dateToString(date) {
+    var hours = date.getHours().toString();
+    var mins = date.getMinutes().toString();
+    var days= date.getDate().toString();
+    var month = date.getMonth().toString() ;
+    if(hours.length == 1){
+         hours = "0" + hours;
+    }
+    if(mins.length == 1){
+        mins = "0" + mins;
+    }
+    if(days.length == 1){
+        days = "0" + days;
+    }
+    if(month.length == 1){
+        month = "0" + month;
+    }
     var dateStr = date.getFullYear().toString() + "-" +
-        date.getMonth().toString() + "-" +
-        date.getDate().toString() + " " +
-        date.getHours().toString() + ":" +
-        date.getMinutes().toString();
+        month + "-" +
+        days + " " +
+        hours + ":" +
+        mins;
 
     return dateStr ;
 }
