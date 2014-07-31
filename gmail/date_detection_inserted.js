@@ -39,10 +39,10 @@ function parseChildByChild(textAsElement){
 
 function dateToString(date) {
     var dateStr = date.getFullYear().toString() + "-" +
-        temp.getMonth().toString() + "-" +
-        temp.getDate().toString() +
-        temp.getHours().toString() + ":" +
-        temp.getMinutes().toString();
+        date.getMonth().toString() + "-" +
+        date.getDate().toString() +
+        date.getHours().toString() + ":" +
+        date.getMinutes().toString();
 
     return dateStr ;
 }
