@@ -94,16 +94,9 @@ function findDateGeneratedByPlugin(resultsArray){
 
                         var dateObject = wetime_results[0].results[0];
                         var newDate = dateObject.startDate;
-                        console.log(theArray[index].results[0].startDate);
-                        theArray[index].results[0].startDate.setDate(newDate.getDay());
-                        console.log(newDate.getDay());
-                        console.log(theArray[index].results[0].startDate);
+                        theArray[index].results[0].startDate.setDate(newDate.getDate());
                         theArray[index].results[0].startDate.setMonth(newDate.getMonth());
-                        console.log(newDate.getMonth());
-                        console.log(theArray[index].results[0].startDate);
-                        theArray[index].results[0].startDate.setYear(newDate.getYear());
-                        console.log(newDate.getMonth());
-                        console.log(theArray[index].results[0].startDate);
+                        theArray[index].results[0].startDate.setFullYear(newDate.getFullYear());
                     }
 
 
@@ -154,7 +147,9 @@ insertionQ('.a3s').every(function(e) {
         var endIndex = detectedDate.text.length + startIndex;
         var date = detectedDate.startDate;
         var detectedText = detectedDate.text;
+            console.log(date);
         var dateString = date.toJSON().replace("T", " ").substring(0, 16);
+            console.log(dateString);
         var span = "<span class='wetime-date-link' data-value='" + dateString + "'>" + detectedText + "<div class='conflict-dot'></div></span>"
         html = html.substring(0,startIndex) + span + html.substring(endIndex);
     });
