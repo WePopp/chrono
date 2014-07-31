@@ -66,6 +66,8 @@ function findDateGeneratedByPlugin(resultsArray){
                 part.results[0].start.hour &&
                 part.results[0].start.impliedComponents)
             {
+                console.log(parent);
+                console.log(grandparent);
                 console.log(part.results[0].start.impliedComponents.indexOf("day") , parent.attr("tagName"), parent.children().eq(0).attr("tagName"), grandparent.attr("tagName"), grandparent.contents()
                     .filter(function(){
                         return this.nodeType === 3;
