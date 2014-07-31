@@ -11,7 +11,7 @@ function parseChildByChild(textAsElement){
           bool = true;
         }
 
-        if(textAsElement.attr("tagName") != "A" && bool){
+        if(textAsElement[0].tagName != "A" && bool){
 
             textAsElement.contents()
                 .filter(function(){
@@ -68,14 +68,14 @@ function findDateGeneratedByPlugin(resultsArray){
             {
                 console.log(parent);
                 console.log(grandparent);
-                console.log(part.results[0].start.impliedComponents.indexOf("day") , parent.attr("tagName"), parent.children().eq(0).attr("tagName"), grandparent.attr("tagName"), grandparent.contents()
+                console.log(part.results[0].start.impliedComponents.indexOf("day") , parent[0].tagName, parent.children()[0].tagName, grandparent.tagName, grandparent.contents()
                     .filter(function(){
                         return this.nodeType === 3;
                     }).length);
                 if( part.results[0].start.impliedComponents.indexOf("day") != -1 &&
-                    parent.attr("tagName") == "DIV" &&
-                    parent.children().eq(0).attr("tagName") == "A" &&
-                    grandparent.attr("tagName") == "DIV" &&
+                    parent[0].tagName == "DIV" &&
+                    parent.children()[0].tagName == "A" &&
+                    grandparent[0].tagName == "DIV" &&
                     grandparent.contents()
                         .filter(function(){
                             return this.nodeType === 3;
