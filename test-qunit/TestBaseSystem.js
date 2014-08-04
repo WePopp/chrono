@@ -382,8 +382,8 @@ test("Test - Obj Instanciate 2", function() {
 	//Set different timezones
 	ok(c1.timezoneMap['CST'] != c2.timezoneMap['CST'], c1.timezoneMap['CST']);
 
-	var date1 = c1.parseDate('Today 1.00 AM (CST)');
-	var date2 = c2.parseDate('Today 1.00 AM (CST)');
+	var date1 = c1.parseDate('Today 1:00 AM (CST)');
+	var date2 = c2.parseDate('Today 1:00 AM (CST)');
 	ok(date1.getTime() != date2.getTime(), date1);
 	
 });

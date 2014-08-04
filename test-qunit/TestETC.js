@@ -2,7 +2,7 @@
 test("Test - Timezone Conversion", function() {
 
 	var results = chrono.parse(
-		'Today at 4.30 PM',
+		'Today at 4:30 PM',
 		'Thu Dec 19 2013 12:00:00 GMT-0500 (EST)'
 	);
 
@@ -25,7 +25,7 @@ test("Test - Timezone Conversion", function() {
 
 
 	var results = chrono.parse(
-		'Today at 4.30 PM',
+		'Today at 4:30 PM',
 		new Date('Thu Dec 19 2013 12:00:00 GMT-0500 (EST)'),
 		{ timezoneOffset: 5*60 }
 	);

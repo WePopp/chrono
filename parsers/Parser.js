@@ -180,7 +180,7 @@
      * @return { CNResult } 
      */
     parser.extractTime = function(text, result){
-      var SUFFIX_PATTERN = /^\s*,?\s*(at\s+|from\s+|T|a\s+|à\s+|l[']|dans l[']|le\s+|in the\s+)?\s*,?\s*([0-9]{1,4}|noon|midnight|minuit|midi|apres-midi|après-midi|matin|morning|afternoon)(((h|\.|\:|\：)([0-9]{1,2})((\.|\:|\：)([0-9]{1,3}))?)?(\s*(AM|PM)?)|h)(\W|$|Z)/i;
+      var SUFFIX_PATTERN = /^\s*,?\s*(at\s+|from\s+|T|a\s+|à\s+|l[']|dans l[']|le\s+|in the\s+)?\s*,?\s*((([0-9]{1,4})(((h|\:|\：)([0-9]{1,2})((\.|\:|\：)([0-9]{1,3}))?)?(\s*(AM|PM)?)|h))|(noon|midnight|minuit|midi|apres-midi|après-midi|matin|morning|afternoon))(\W|$|Z)/i;
 
       if(text.length <= result.index + result.text.length) return null;
       text = text.substr(result.index + result.text.length);
@@ -206,9 +206,9 @@
       else
         hour = parseInt(hour);
       
-      if(matchedTokens[6]){
+      if(matchedTokens[8]){
         
-        minute = matchedTokens[6];
+        minute = matchedTokens[8];
         minute = parseInt(minute);
         if(minute >= 60) return null;
         
@@ -219,29 +219,29 @@
       
 
 
-      if(matchedTokens[9]){
+      if(matchedTokens[11]){
         
-        second = matchedTokens[9];
+        second = matchedTokens[11];
         second = parseInt(second);
         if(second >= 60) return null;
       }
       
-      if(matchedTokens[11]){
+      if(matchedTokens[13]){
         //AM & PM  
         if(hour > 12) return null;
-        if(matchedTokens[11].toLowerCase() == "am"){
+        if(matchedTokens[13].toLowerCase() == "am"){
           if(hour == 12) hour = 0;
         }
-        if(matchedTokens[11].toLowerCase() == "pm"){
+        if(matchedTokens[13].toLowerCase() == "pm"){
           if(hour != 12) hour += 12;
         }
         
-        result.start.meridiem = matchedTokens[10].toLowerCase();
+        result.start.meridiem = matchedTokens[13].toLowerCase();
       }
       if(hour >= 12) result.start.meridiem = 'pm';
       if(hour > 24) return null;
       result.text = result.text + matchedTokens[0].substr(0, 
-        matchedTokens[0].length - matchedTokens[12].length);
+        matchedTokens[0].length - matchedTokens[15].length);
       
       if(result.start.hour == undefined){
         result.start.hour = hour;
@@ -249,8 +249,8 @@
         result.start.second = second;
       }
       
-      var TO_SUFFIX_PATTERN = /^\s*(\-|\~|\〜|to|\?)\s*([0-9]{1,4})((\.|\:|\：|h)([0-9]{1,2})((\.|\:|\：)([0-9]{1,2}))?)?(\s*(AM|PM))?/i;
-      text = text.substr(matchedTokens[0].length - matchedTokens[12].length);
+      var TO_SUFFIX_PATTERN = /^\s*(to)\s*([0-9]{1,4})((\.|\:|\：|h)([0-9]{1,2})((\.|\:|\：)([0-9]{1,2}))?)?(\s*(AM|PM))?/i;
+      text = text.substr(matchedTokens[0].length - matchedTokens[15].length);
       matchedTokens = text.match(TO_SUFFIX_PATTERN)
       
       if( !matchedTokens ) {

@@ -47,7 +47,6 @@
       var remainingText = text;
       
       var matchedTokens = text.match(regPattern);
-        console.log(matchedTokens);
       text = matchedTokens[0];
       text = matchedTokens[0].substr(matchedTokens[1].length, matchedTokens[0].length - matchedTokens[10].length - matchedTokens[1].length);
       index = index + matchedTokens[1].length;
