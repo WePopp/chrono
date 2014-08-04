@@ -11,7 +11,7 @@
   
   function DateOnlyParser(text, ref, opt){
     
-    var PATTERN = /(\W|^)((on|the|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s*)([0-9]{1,2})(th|rd|nd|st)(\W|$)/i;
+    var PATTERN = /(\W|^)((on|the|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s*)([0-2]?[0-9]|3[0-1])(th|rd|nd|st)(\W|$)/i;
     opt = opt || {};
     ref = ref || new Date();
     var parser = chrono.Parser(text, ref, opt);
