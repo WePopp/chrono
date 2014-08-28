@@ -95,6 +95,7 @@ function findDateGeneratedByPlugin(resultsArray){
 
                 if( part.results[0].start.impliedComponents.indexOf("day") != -1 &&
                     parent[0].tagName == "DIV" &&
+                    parent.children().length > 0 &&
                     parent.children()[0].tagName == "A" &&
                     grandparent[0].tagName == "DIV" &&
                     grandparent.contents()
