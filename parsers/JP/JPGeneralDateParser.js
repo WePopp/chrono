@@ -41,13 +41,13 @@
   		if(text == '今日')
   			date = moment(ref).clone();
   		else if(text == '明日')
-  			date = moment(ref).clone().add('d',1);
+  			date = moment(ref).clone().add(1, 'd');
   		else if(text == '昨日')
-  			date = moment(ref).clone().add('d',-1);
+  			date = moment(ref).clone().add(-1, 'd');
   		else {
   		  var days_ago = matchedTokens[2];
   		  days_ago = parseInt(days_ago);
-  		  date = moment(ref).clone().add('d',-days_ago);
+  		  date = moment(ref).clone().add(-days_ago, 'd');
   		}
   		  
       var result = new chrono.ParseResult({

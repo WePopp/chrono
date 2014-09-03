@@ -84,8 +84,8 @@
         if(!date) return null;
         
         //Find the most appropriated year
-        var nextYear = date.clone().add('y',1);
-        var lastYear = date.clone().add('y',-1);
+        var nextYear = date.clone().add(1, 'y');
+        var lastYear = date.clone().add(-1, 'y');
         if( Math.abs(nextYear.diff(moment(ref))) < Math.abs(date.diff(moment(ref))) ){	
         	date = nextYear;
         }

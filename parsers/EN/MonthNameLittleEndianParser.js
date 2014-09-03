@@ -77,8 +77,8 @@
         //Find the most appropriated year
         impliedComponents.push('year')
         date.year(moment(ref).year());
-        var nextYear = date.clone().add('y',1);
-        var lastYear = date.clone().add('y',-1);
+        var nextYear = date.clone().add(1, 'y');
+        var lastYear = date.clone().add(-1, 'y');
         if( Math.abs(nextYear.diff(moment(ref))) < Math.abs(date.diff(moment(ref))) ){	
         	date = nextYear;
         }

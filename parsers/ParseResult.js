@@ -84,7 +84,7 @@
       dateMoment.minutes(this.minute);
       dateMoment.seconds(this.second);
 
-      dateMoment.add('minutes', timezoneOffset - new Date(this.year,this.month,this.day).getTimezoneOffset());
+      dateMoment.add(timezoneOffset - new Date(this.year,this.month,this.day).getTimezoneOffset(), 'minutes');
       //console.log(timezoneOffset)
       return dateMoment.toDate();
     }

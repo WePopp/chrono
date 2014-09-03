@@ -41,7 +41,7 @@
       }
       else if(lowercase_text == 'demain'){
         if(ref_moment.hour() < 4) date = ref_moment.clone().hour(6);
-        else date = ref_moment.clone().add('d',1);
+        else date = ref_moment.clone().add(1, 'd');
       }
       else if(lowercase_text.match('ce') || lowercase_text.match('cette'))
         date = ref_moment.clone();
@@ -86,7 +86,7 @@
           
         }else if(resultWithTime.start.hour < 6){ //Today's 0am - 12am
           
-          date.add('d',1);
+          date.add(1, 'd');
           result.start.day = date.date()
           result.start.month = date.month()
           result.start.year = date.year()

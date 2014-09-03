@@ -41,16 +41,16 @@
       }
       else if(lowercase_text == 'tomorrow'){
         if(ref_moment.hour() < 4) date = ref_moment.clone().hour(6);
-        else date = ref_moment.clone().add('d',1);
+        else date = ref_moment.clone().add(1,'d');
       }
       else if(lowercase_text == 'yesterday')
-        date = ref_moment.clone().add('d',-1);
+        date = ref_moment.clone().add(-1, 'd');
       else if(lowercase_text.match('last'))
-        date = ref_moment.clone().add('d',-1);
+        date = ref_moment.clone().add(-1, 'd');
       else if(lowercase_text.match('ago')){
         var days_ago = matchedTokens[2];
         days_ago = parseInt(days_ago);
-        date = ref_moment.clone().add('d',-days_ago);
+        date = ref_moment.clone().add(-days_ago, 'd');
       }else{
         if(full_text.charAt(index-1).match(/\d/)) return null;
         if(full_text.match(/\d+(\.\d+)%/)) return null;
@@ -92,7 +92,7 @@
           
         }else if(resultWithTime.start.hour < 6){ //Today's 0am - 12am
           
-          date.add('d',1);
+          date.add(1, 'd');
           result.start.day = date.date()
           result.start.month = date.month()
           result.start.year = date.year()

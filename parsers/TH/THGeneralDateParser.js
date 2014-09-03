@@ -49,15 +49,15 @@
   		if(text == 'วันนี้')
   			date = moment(ref).clone();
   		else if(text == 'พรุ่งนี้')
-  			date = moment(ref).clone().add('d',1);
+  			date = moment(ref).clone().add(1, 'd');
   		else if(text == 'เมื่อวาน')
-  			date = moment(ref).clone().add('d',-1);
+  			date = moment(ref).clone().add(-1, 'd');
       else if(text == 'เมื่อคืน')
-  		  date = moment(ref).clone().add('d',-1);
+  		  date = moment(ref).clone().add(-1, 'd');
   		else {
   		  var days_ago = matchedTokens[2];
   		  days_ago = parseInt(days_ago);
-  		  date = moment(ref).clone().add('d',-days_ago);
+  		  date = moment(ref).clone().add(-days_ago, 'd');
   		}
   		  
       var result = new chrono.ParseResult({
@@ -86,7 +86,7 @@
           
         }else if(resultWithTime.start.hour < 12){ //Today's 0am - 12am
           
-          date.add('d',1);
+          date.add(1, 'd');
           result.start.day = date.date()
           result.start.month = date.month()
           result.start.year = date.year()
