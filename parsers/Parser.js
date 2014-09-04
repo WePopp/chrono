@@ -365,7 +365,7 @@
         if(result.start.timezoneOffset === undefined){
           result.start.timezoneOffset = timezoneOffset;
           result.start.timezoneAbbr = matchedTokens[1];
-          result.start.timezoneRegion = moment.tz.zone(matchedTokens[1]);
+          result.start.timezoneRegion = moment.tz.zone(matchedTokens[1]).name;
           if(result.end) result.end.timezoneOffset = timezoneOffset;
         }
         
