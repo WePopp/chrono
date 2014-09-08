@@ -417,3 +417,12 @@ test("Test - Obj Instanciate 3", function() {
 });
 
 
+test("Test - false detection in phone number", function(){
+    var _chrono = new chrono();
+    var result = _chrono.parse('02.85.52.21.12', new Date(2013,11,2))
+    ok(result.length == 0, result);
+
+
+});
+
+

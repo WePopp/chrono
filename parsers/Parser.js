@@ -361,11 +361,18 @@
       if(matchedTokens && timezoneMap[matchedTokens[1]] !== undefined){
         var timezoneAbbr = matchedTokens[1];
         var timezoneOffset =- timezoneMap[timezoneAbbr];
+        var timezoneRegion;
+        if(matchedTokens[1].toLowerCase()=="z"){
+            timezoneRegion = "GMT"
+        }
+        else if(!!moment.tz.zone(matchedTokens[1])){
+            timezoneRegion = moment.tz.zone(matchedTokens[1]).name;
+        }
 
         if(result.start.timezoneOffset === undefined){
           result.start.timezoneOffset = timezoneOffset;
           result.start.timezoneAbbr = matchedTokens[1];
-          result.start.timezoneRegion = moment.tz.zone(matchedTokens[1]).name;
+          result.start.timezoneRegion = timezoneRegion;
           if(result.end) result.end.timezoneOffset = timezoneOffset;
         }
         
