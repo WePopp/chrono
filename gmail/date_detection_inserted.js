@@ -2,16 +2,15 @@ var detectedDates = [];
 
 
 function parseChildByChild(textAsElement){
+
+    var bool;
+    try{
+        bool =  !textAsElement.attr("class").match("wetime-date-link");
+    }
+    catch(err){
+        bool = true;
+    }
     if(textAsElement.attr("class") != "gmail_quote" && textAsElement[0].tagName != "A" && bool && (textAsElement[0].getAttribute("summary") == null || textAsElement[0].tagName != "TABLE")){
-        var bool;
-        try{
-          bool =  !textAsElement.attr("class").match("wetime-date-link");
-        }
-        catch(err){
-          bool = true;
-        }
-
-
 
         textAsElement.contents()
             .filter(function(){
