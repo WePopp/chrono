@@ -186,3 +186,7 @@ insertionQ('.a3s').every(function(e) {
   }
   $body.append("<div class='wetime-detection-completed'></div>")
 });
+
+insertionQ(".editable").every(function(e){
+    $(e).find(".wetime-date-link").each(function(e){$(this).removeClass()})
+});
