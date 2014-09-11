@@ -2,7 +2,7 @@ var detectedDates = [];
 
 
 function parseChildByChild(textAsElement){
-    if(textAsElement.attr("class") != "gmail_quote"){
+    if(textAsElement.attr("class") != "gmail_quote" && textAsElement[0].tagName != "A" && bool && (textAsElement[0].getAttribute("summary") == null || textAsElement[0].tagName != "TABLE")){
         var bool;
         try{
           bool =  !textAsElement.attr("class").match("wetime-date-link");
@@ -11,24 +11,24 @@ function parseChildByChild(textAsElement){
           bool = true;
         }
 
-        if(textAsElement[0].tagName != "A" && bool){
 
-            textAsElement.contents()
-                .filter(function(){
-                    return this.nodeType === 3;
-                })
-                .each(function(i){
-                  
-                    var results = chrono.parse($(this).text());
-                    var textNode = $(this);
-                    if( results.length >0){
-                        detectedDates.push({results: results,
-                            textNode: textNode,
-                            textNodeIndexInElement: i,
-                            element: textAsElement});
-                    }
-                });
-        }
+
+        textAsElement.contents()
+            .filter(function(){
+                return this.nodeType === 3;
+            })
+            .each(function(i){
+
+                var results = chrono.parse($(this).text());
+                var textNode = $(this);
+                if( results.length >0){
+                    detectedDates.push({results: results,
+                        textNode: textNode,
+                        textNodeIndexInElement: i,
+                        element: textAsElement});
+                }
+            });
+
 
         if(textAsElement.children().length>0){
             textAsElement.children().each(function(){parseChildByChild($(this))});
