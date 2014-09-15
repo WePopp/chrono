@@ -51,9 +51,18 @@
       month = parseInt(month);
       day = parseInt(day);
       years = parseInt(years);
-      if(month < 1 || month > 12) return null;
-      if(day < 1 || day > 31) return null;
+      if((month < 1 || month > 12) && (day <1 || day>31) ) return null;
+      else if(month>12 && month <32 && day>0 && day < 13){
+          var tempday = day;
+          day = month;
+          month = tempday;
 
+      }
+      else if( (month < 1 || month > 31) && (day<1 || day>12)) return null;
+      else if (month<1 || day<1 || (month>12 && day>12) || month>31 || day>31) return null;
+
+        console.log(day);
+        console.log(month);
       if(years < 100){
         if(years > 50){
           years = years + 2500 - 543; //BE

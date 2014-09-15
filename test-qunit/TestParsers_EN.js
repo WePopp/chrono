@@ -71,6 +71,23 @@ test("EN Test - Slash", function() {
 	}
 
 
+    var text = "The Deadline is 31/08/2014";
+    var results = chrono.parse(text, new Date(2012,7,10));
+
+    ok(results.length == 1, JSON.stringify( results ) )
+
+    var result = results[0];
+    if(result){
+        ok(result.start, JSON.stringify(result.start) )
+        ok(result.start.year == 2014, 'Test Result - (Year) ' + JSON.stringify(result.start) )
+        ok(result.start.month == 7, 'Test Result - (Month) ' + JSON.stringify(result.start) )
+        ok(result.start.day == 31, 'Test Result - (Day) ' + JSON.stringify(result.start) )
+
+        ok(result.index == 16, 'Wrong index');
+        ok(result.text == '31/08/2014', result.text );
+    }
+
+
 	var text = "The Deadline is 1/10/13";
 	var results = chrono.parse(text, new Date(2012,7,10));
 
