@@ -71,6 +71,14 @@ test("EN Test - Slash", function() {
 	}
 
 
+    var text = "The Deadline is 24/24";
+    var results = chrono.parse(text, new Date(2012,7,10));
+
+    ok(results.length == 0, JSON.stringify( results ) )
+
+
+
+
     var text = "The Deadline is 31/08/2014";
     var results = chrono.parse(text, new Date(2012,7,10));
 
