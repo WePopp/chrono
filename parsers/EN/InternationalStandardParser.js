@@ -8,7 +8,7 @@
   if(typeof chrono == 'undefined')
     throw 'Cannot find the chrono main module';
   
-  var PATTERN = /([0-9]{4})\-([0-9]{1,2})\-([0-9]{1,2})(\W|$|T)/i;
+  var PATTERN = /([0-9]{4})\-([0-9]{1,2})\-([0-9]{1,2})(\W|_|$|T)/i;
   
   function InternationalStandardParser(text, ref, opt){
     

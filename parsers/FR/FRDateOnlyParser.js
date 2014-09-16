@@ -11,7 +11,7 @@
   
   function FRDateOnlyParser(text, ref, opt){
     
-    var PATTERN = /(\W|^)((le|Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dimanche)\s*)([0-2]?[0-9]|3[0-1])(?!\s*rue)(\W|$)/i;
+    var PATTERN = /(\W|_|^)((le|Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dimanche)\s*)([0-2]?[0-9]|3[0-1])(?!\s*rue)(\W|_|$)/i;
     opt = opt || {};
     ref = ref || new Date();
     var parser = chrono.Parser(text, ref, opt);

@@ -8,7 +8,7 @@
   if(typeof chrono == 'undefined')
     throw 'Cannot find the chrono main module';
   
-  var PATTERN = /(\W|^)((\,|\(|\（)\s*)?((ce)\s*)?(Dimanche|Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi)(\s*(prochain|en\s*8|en\s*15))?(\s*(\,|\)|\）))?(\W|$)/i;
+  var PATTERN = /(\W|_|^)((\,|\(|\（)\s*)?((ce)\s*)?(Dimanche|Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi)(\s*(prochain|en\s*8|en\s*15))?(\s*(\,|\)|\）))?(\W|_|$)/i;
   
   var DAYS_OFFSET = { 'dimanche': 0, 'lundi': 1, 'mardi': 2, 'mercredi': 3,
     'jeudi': 4,'vendredi': 5,'samedi': 6};
