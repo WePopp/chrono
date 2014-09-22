@@ -180,11 +180,11 @@
      * @return { CNResult } 
      */
     parser.extractTime = function(text, result){
-      var SUFFIX_PATTERN = /^\s*,?\s*(at\s+|from\s+|T|a\s+|à\s+|l[']|dans l[']|le\s+|in the\s+)?\s*,?\s*((([0-9]{1,4})(((h|\:|\：)([0-5]?[0-9]|60)((\.|\:|\：)([0-9]{1,3}))?)?(\s*(AM|PM)?)|h))|(noon|midnight|minuit|midi|apres-midi|après-midi|matin|morning|afternoon))(\W|$|Z)/i;
+      var SUFFIX_PATTERN = /^\s*,?\s*(at\s+|from\s+|T|a\s+|à\s+|l[']|dans l[']|le\s+|in the\s+)?\s*,?\s*((([0-9]{1,4})(((h|\:|\：|\.)([0-5]?[0-9]|60)((\.|\:|\：)([0-9]{1,3}))?)?(\s*(AM|PM)?)|h))|(noon|midnight|minuit|midi|apres-midi|après-midi|matin|morning|afternoon))(\W|$|Z)/i;
 
       if(text.length <= result.index + result.text.length) return null;
       text = text.substr(result.index + result.text.length);
-      
+
       var matchedTokens = text.match(SUFFIX_PATTERN);
       if( !matchedTokens ) return null;
       var minute = 0;

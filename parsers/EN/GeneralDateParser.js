@@ -8,7 +8,7 @@
   if(typeof chrono == 'undefined')
     throw 'Cannot find the chrono main module';
   
-  var PATTERN = /(today|tonight|tomorrow|yesterday|last\s*night|([0-9]+)\s*day(s)\s*ago|([0-9]{1,2})(\:|\：)([0-9]{2})|([0-9]{1,2}\s*\W?\s*)?([0-9]{1,2})\s*(AM|PM)|(\s+at)\s+([0-9]{1,2}|noon|midnight)|\s+(noon|midnight|afternoon|morning))(\W|_|$)(?!(\s*([€]|[$])))/i;
+  var PATTERN = /(?!(\s*([€]|[$]|\.))\s*)(\W|_|^)(today|tonight|tomorrow|yesterday|last\s*night|([0-9]{1,2})(\:|\：|\.)([0-9]{2})|([0-9]{1,2}\s*\W?\s*)?([0-9]{1,2})\s*(AM|PM)|(at)\s+([0-9]{1,2}|noon|midnight)|\s*(noon|midnight|afternoon|morning))(?!(\s*([€]|[$]|\.)))(\W|_|$)/i;
   
   function GeneralDateParser(text, ref, opt){
     
@@ -19,17 +19,17 @@
     parser.pattern = function() { return PATTERN; }
     
     parser.extract = function(full_text,index){ 
-      
+
       var matchedTokens = full_text.substr(index).match(PATTERN);
+        console.log(matchedTokens);
       if(matchedTokens == null){
         finished = true;
         return;
       }
-
+      console.log(matchedTokens);
       var impliedComponents = null;
       var text = matchedTokens[0].toLowerCase();
-      text = matchedTokens[0].substr(0, matchedTokens[0].length - matchedTokens[13].length);
-      
+      text = matchedTokens[0].substr(matchedTokens[3].length, matchedTokens[0].length - matchedTokens[16].length);
       var ref_moment = moment(ref);
       if(opt.timezoneOffset !== undefined) 
         ref_moment = ref_moment.zone(opt.timezoneOffset)
@@ -55,13 +55,14 @@
         if(full_text.charAt(index-1).match(/\d/)) return null;
         if(full_text.match(/\d+(\.\d+)%/)) return null;
         
-        while(full_text.charAt(index) == ' ') index++;
+
         
         impliedComponents = ['year', 'month', 'day'];
         date = ref_moment.clone();
         text = '';
       }
-       
+      while(full_text.charAt(index) == ' ') index++;
+
       var result = new chrono.ParseResult({
         referenceDate:ref_moment.toDate(),
         text:text,
@@ -70,10 +71,10 @@
           day:date.date(),
           month:date.month(),
           year:date.year(),
-          impliedComponents: impliedComponents,
+          impliedComponents: impliedComponents
         }
       })
-      
+
 
       var resultWithTime = parser.extractTime(full_text,result);
       result = resultWithTime || result;

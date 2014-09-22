@@ -65,7 +65,7 @@
 //      }
 //      else if( (month < 1 || month > 31) && (day<1 || day>12)) return null;
 //      else if (month<1 || day<1 || (month>12 && day>12) || month>31 || day>31) return null;
-      if(day<1 || day>31 || month>12 || month<1) return null;
+      if(day<1 || day>31 || month>12 || month<1) return null;
 
       if(years < 100){
         if(years > 50){

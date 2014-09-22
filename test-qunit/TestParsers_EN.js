@@ -1499,6 +1499,10 @@ test("EN Test - DateOnly", function() {
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 0, text)
 
+//    var text = " $ 3.20 ";
+//    var results = chrono.parse(text, new Date(2012,7,10));
+//    ok(results.length == 0, text)
+
 });
 
 //test("EN Test - Date & Time ago", function() {
@@ -1887,6 +1891,30 @@ test("EN Test - General", function() {
 		var expectDate = (new Date(2012,7,10,1,23));
 		ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
 	}
+
+
+
+    var text = "The Deadline is last night at 1.23 am";
+    var results = chrono.parse(text, new Date(2012,7,10));
+
+    ok(results.length == 1, JSON.stringify( results ) )
+
+    var result = results[0];
+    if(result){
+        ok(result.start, JSON.stringify(result.start) )
+        ok(result.start.year == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) )
+        ok(result.start.month == 7, 'Test Result - (Month) ' + JSON.stringify(result.start) )
+        ok(result.start.day == 10, 'Test Result - (Day) ' + JSON.stringify(result.start) )
+        ok(result.start.hour === 1, 'Test Result - (hour) ' + JSON.stringify(result.start) )
+        ok(result.start.minute === 23, 'Test Result - (hour) ' + JSON.stringify(result.start) )
+
+        ok(result.index == 16, 'Wrong index')
+        ok(result.text == 'last night at 1.23 am', result.text )
+
+        var resultDate = (result.startDate);
+        var expectDate = (new Date(2012,7,10,1,23));
+        ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
+    }
     //64
 
 
@@ -1913,6 +1941,28 @@ test("EN Test - General", function() {
     ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
   }
   //73
+    var text = "The Deadline is 12.00";
+    var results = chrono.parse(text, new Date(2012,7,10));
+
+    ok(results.length == 1, JSON.stringify( results ) )
+
+    var result = results[0];
+    if(result){
+        ok(result.start, JSON.stringify(result.start) )
+        ok(result.start.year == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) )
+        ok(result.start.month == 7, 'Test Result - (Month) ' + JSON.stringify(result.start) )
+        ok(result.start.day == 10, 'Test Result - (Day) ' + JSON.stringify(result.start) )
+        ok(result.start.hour === 12, 'Test Result - (hour) ' + JSON.stringify(result.start) )
+        ok(result.start.minute === 00, 'Test Result - (hour) ' + JSON.stringify(result.start) )
+
+        ok(result.text == '12.00', result.text )
+
+        var resultDate = (result.startDate);
+        var expectDate = (new Date(2012,7,10,12,00));
+        ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
+    }
+
+
 	var text = "The Deadline is 11:00";
 	var results = chrono.parse(text, new Date(2012,7,10));
 
@@ -1954,6 +2004,28 @@ test("EN Test - General", function() {
     var expectDate = (new Date(2012,7,10,23,00));
     ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
   }
+
+
+    var text = "The Deadline is 11.00pm    ";
+    var results = chrono.parse(text, new Date(2012,7,10));
+
+    ok(results.length == 1, JSON.stringify( results ) )
+
+    var result = results[0];
+    if(result){
+        ok(result.start, JSON.stringify(result.start) )
+        ok(result.start.year == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) )
+        ok(result.start.month == 7, 'Test Result - (Month) ' + JSON.stringify(result.start) )
+        ok(result.start.day == 10, 'Test Result - (Day) ' + JSON.stringify(result.start) )
+        ok(result.start.hour === 23, 'Test Result - (hour) ' + JSON.stringify(result.start) )
+        ok(result.start.minute === 00, 'Test Result - (hour) ' + JSON.stringify(result.start) )
+
+        ok(result.text == '11.00pm', result.text )
+
+        var resultDate = (result.startDate);
+        var expectDate = (new Date(2012,7,10,23,00));
+        ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
+    }
   //91
 
 	var text = "The Deadline is 11:00pm    ";
@@ -2049,6 +2121,10 @@ test("EN Test - General2", function() {
   ok(result.text == text, result.text)
 
   var text = "tuesday 7/2/2013 2:30 pm";
+  var result = chrono.parse(text)[0];
+  ok(result.text == text, result.text)
+
+  var text = "tuesday 7/2/2013 2.30 pm";
   var result = chrono.parse(text)[0];
   ok(result.text == text, result.text)
 
