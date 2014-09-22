@@ -21,12 +21,12 @@
     parser.extract = function(full_text,index){ 
 
       var matchedTokens = full_text.substr(index).match(PATTERN);
-        console.log(matchedTokens);
+
       if(matchedTokens == null){
         finished = true;
         return;
       }
-      console.log(matchedTokens);
+
       var impliedComponents = null;
       var text = matchedTokens[0].toLowerCase();
       text = matchedTokens[0].substr(matchedTokens[3].length, matchedTokens[0].length - matchedTokens[16].length);
