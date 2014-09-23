@@ -2178,10 +2178,10 @@ test("EN Test - General2", function() {
   var text = "tonight";
   var result = chrono.parse(text, new Date(2012, 1, 1))[0];
   ok(result.text == text, result.text)
-  ok(result.start.hour == 0, result.text)
+  ok(result.start.hour == 21, result.text)
   ok(result.start.year == 2012, result.text)
   ok(result.start.month == 1, result.text)
-  ok(result.start.day == 2, result.text)
+  ok(result.start.day == 1, result.text)
 
   var text = "tonight 8pm";
   var result = chrono.parse(text, new Date(2012, 1, 1))[0];

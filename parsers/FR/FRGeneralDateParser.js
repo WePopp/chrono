@@ -76,13 +76,23 @@
       if(lowercase_text.match('nuit')|| lowercase_text.match('soir')){
         
         if(!resultWithTime){ // Midnight
-          
-          result.start.day = date.date() + 1;
-          result.start.hour = 0;
-          result.start.minute = 0;
-          result.start.second = 0;
-          result.start.impliedComponents = ['hour','minute','second'];
-          result = new chrono.ParseResult(result);
+          if(lowercase_text.match('soir')){
+              result.start.day = date.date();
+              result.start.hour = 21;
+              result.start.minute = 0;
+              result.start.second = 0;
+              result.start.impliedComponents = ['hour','minute','second'];
+              result = new chrono.ParseResult(result);
+          }
+          else{
+              result.start.day = date.date() + 1;
+              result.start.hour = 0;
+              result.start.minute = 0;
+              result.start.second = 0;
+              result.start.impliedComponents = ['hour','minute','second'];
+              result = new chrono.ParseResult(result);
+          }
+
           
         }else if(resultWithTime.start.hour < 6){ //Today's 0am - 12am
           
