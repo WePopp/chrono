@@ -1,5 +1,5 @@
 echo '(function(){' > tmp
-cat ./moment.js >> tmp
+cat ./moment-with-locales.min.js >> tmp
 cat ./moment-timezone-with-data.js >> tmp
 cat ./chrono.js >> tmp
 cat ./timezone.js >> tmp

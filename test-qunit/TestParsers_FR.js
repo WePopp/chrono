@@ -905,7 +905,7 @@ test('FR Test - Timezone', function() {
 
   var text = "It's 29 Août 2013, 06h22 in Local";
   var results = chrono.parse(text, new Date());
-  var resultDate = results[0].start.date(new Date().getTimezoneOffset());
+  var resultDate = results[0].start.date(new Date(2013, 7, 29).getTimezoneOffset());
   var resultDate2 = results[0].start.date();
   ok(resultDate.getTime() == resultDate2.getTime(),
     resultDate +' != '+ resultDate2);

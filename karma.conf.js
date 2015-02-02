@@ -13,7 +13,7 @@ module.exports = function(config) {
     
     // list of files / patterns to load in the browser
     files: [
-      'moment.js',
+      'moment-with-locales.min.js',
       'chrono.min.js',
       'chrono.js',
       'timezone.js',
