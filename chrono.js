@@ -54,7 +54,7 @@
   }
   else{
     //Node JS
-    if(typeof moment == 'undefined') eval("var moment = require('./moment');");
+    if(typeof moment == 'undefined') eval("var moment = require('moment');");
     var fs = require('fs');
     
     function loadModuleDirs(dir){
