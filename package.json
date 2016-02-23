@@ -15,7 +15,6 @@
   },
   "main": "./chrono",
   "devDependencies": {
-    "moment": "2.10.0",
     "qunitjs": "~1.12.0",
     "karma-script-launcher": "~0.1.0",
     "karma-chrome-launcher": "~0.1.0",
@@ -28,5 +27,8 @@
     "karma": "~0.10.4",
     "karma-qunit": "~0.1.1",
     "uglify-js": "~2.4.1"
+  },
+  "dependencies": {
+    "moment": "^2.10.3"
   }
 }
